@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050505;
+  color: #f5f5f5;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(143, 183, 163, 0.22);
+  color: #ffffff;
+}
+
+/* Thin, discreet scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  border: 3px solid #050505;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-12;
+  }
+
+  .kicker {
+    @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-kicker text-mute;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-line;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-tight transition-all duration-500 ease-premium will-change-transform;
+  }
+  .btn-primary {
+    @apply btn bg-fog text-ink-900 hover:bg-white hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-line-strong text-fog hover:border-white/40 hover:bg-white/[0.03] hover:-translate-y-0.5;
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-3xl border border-line bg-ink-800 transition-all duration-700 ease-premium;
+  }
+  .card:hover {
+    @apply border-line-strong bg-ink-700 -translate-y-1;
+  }
+}
+
+@layer utilities {
+  /* Subtle film-grain overlay applied via ::before */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  }
+
+  .editorial {
+    filter: grayscale(1) contrast(1.05) brightness(0.92);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  }
+
+  .text-glow {
+    text-shadow: 0 1px 60px rgba(255, 255, 255, 0.12);
+  }
+}
