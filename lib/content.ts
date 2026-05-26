@@ -3,9 +3,9 @@ export const business = {
   tagline: "Salon de coiffure homme · Le Thor",
   phone: "+33 4 90 33 98 30",
   phoneHref: "tel:+33490339830",
-  // ⚠️ Numéro WhatsApp du salon — format international, sans "+" ni espaces.
-  // Le 04 90… est une ligne FIXE : remplacer par le mobile/WhatsApp Business du salon.
-  whatsapp: "33490339830",
+  // Numéro WhatsApp du salon — format international, sans "+" ni espaces.
+  // ⚠️ PROVISOIRE : 0625187195 (à confirmer avec le salon).
+  whatsapp: "33625187195",
   address: "144 Cr Gambetta, 84250 Le Thor",
   addressLines: ["144 Cours Gambetta", "84250 Le Thor, France"],
   mapsHref:
