@@ -4,9 +4,10 @@ import { Stats } from "@/components/Stats";
 import { Services } from "@/components/Services";
 import { Gallery } from "@/components/Gallery";
 import { Reviews } from "@/components/Reviews";
-import { Atmosphere } from "@/components/Atmosphere";
+import { Reservation } from "@/components/Reservation";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { MobileCTA } from "@/components/MobileCTA";
 
 export default function Home() {
   return (
@@ -18,10 +19,11 @@ export default function Home() {
         <Services />
         <Gallery />
         <Reviews />
-        <Atmosphere />
+        <Reservation />
         <Contact />
       </main>
       <Footer />
+      <MobileCTA />
     </>
   );
 }

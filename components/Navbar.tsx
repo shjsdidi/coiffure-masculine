@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { business, nav } from "@/lib/content";
+import { business, nav, whatsappLink } from "@/lib/content";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +54,12 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <a href="#contact" className="btn-primary hidden md:inline-flex">
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary hidden h-10 min-h-0 px-5 py-2 text-sm md:inline-flex"
+            >
               Prendre rendez-vous
             </a>
             <button
@@ -114,7 +119,9 @@ export function Navbar() {
               ))}
               <li className="pt-8">
                 <a
-                  href="#contact"
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="btn-primary w-full"
                 >

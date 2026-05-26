@@ -1,19 +1,159 @@
 export const business = {
   name: "Coiffure Masculine",
-  tagline: "Salon de coiffure homme · Le Thor",
-  phone: "+33 4 90 33 98 30",
+  shortPitch: "Coiffeur homme · Le Thor",
+  city: "Le Thor",
+  phone: "04 90 33 98 30",
   phoneHref: "tel:+33490339830",
   // Numéro WhatsApp du salon — format international, sans "+" ni espaces.
   // ⚠️ PROVISOIRE : 0625187195 (à confirmer avec le salon).
   whatsapp: "33625187195",
-  address: "144 Cr Gambetta, 84250 Le Thor",
-  addressLines: ["144 Cours Gambetta", "84250 Le Thor, France"],
+  addressShort: "144 Cours Gambetta, Le Thor",
+  address: "144 Cours Gambetta, 84250 Le Thor",
+  addressLines: ["144 Cours Gambetta", "84250 Le Thor"],
   mapsHref:
     "https://www.google.com/maps/search/?api=1&query=Coiffure+Masculine+144+Cours+Gambetta+84250+Le+Thor",
+  reviewsHref:
+    "https://www.google.com/maps/search/?api=1&query=Coiffure+Masculine+Le+Thor",
   instagram: "https://instagram.com",
   rating: "4,9",
   reviewCount: "45",
+  hoursSummary: "Mardi – Samedi",
 };
+
+export const nav = [
+  { label: "Prestations", href: "#prestations" },
+  { label: "Galerie", href: "#galerie" },
+  { label: "Avis", href: "#avis" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const hours = [
+  { day: "Mardi – Vendredi", time: "09h00 – 19h00" },
+  { day: "Samedi", time: "08h30 – 18h00" },
+  { day: "Dimanche – Lundi", time: "Fermé" },
+];
+
+/** Petits repères de confiance affichés sous le hero. */
+export const trust = [
+  { value: "4,9", suffix: "★", label: "sur Google" },
+  { value: "45", suffix: "", label: "avis clients" },
+  { value: "Sans RDV", suffix: "", label: "ou sur réservation" },
+  { value: "Le Thor", suffix: "", label: "Cours Gambetta" },
+];
+
+export type Service = {
+  title: string;
+  description: string;
+  price: string;
+  duration: string;
+};
+
+export const services: Service[] = [
+  {
+    title: "Coupe classique",
+    description: "Coupe ciseaux ou tondeuse, nette et adaptée à votre visage.",
+    price: "18 €",
+    duration: "30 min",
+  },
+  {
+    title: "Dégradé",
+    description: "Dégradé précis, du flou léger au taper net.",
+    price: "20 €",
+    duration: "35 min",
+  },
+  {
+    title: "Barbe",
+    description: "Taille, contours et entretien à la tondeuse et au rasoir.",
+    price: "12 €",
+    duration: "20 min",
+  },
+  {
+    title: "Contours",
+    description: "Reprise des contours et de la nuque entre deux coupes.",
+    price: "10 €",
+    duration: "15 min",
+  },
+  {
+    title: "Coupe + barbe",
+    description: "La prestation complète : cheveux travaillés et barbe taillée.",
+    price: "28 €",
+    duration: "45 min",
+  },
+];
+
+export type Review = {
+  quote: string;
+  name: string;
+  city: string;
+};
+
+// ⚠️ Avis placeholder — à REMPLACER par les vrais avis Google du salon avant la mise en ligne définitive.
+export const reviews: Review[] = [
+  {
+    quote: "Super accueil, salon propre, et la coupe est nickel à chaque fois.",
+    name: "Nicolas R.",
+    city: "Le Thor",
+  },
+  {
+    quote: "Très bon dégradé, il prend le temps de bien faire. Je recommande.",
+    name: "Antoine G.",
+    city: "L'Isle-sur-la-Sorgue",
+  },
+  {
+    quote: "Pro et rapide, et le rendu est toujours propre.",
+    name: "Thomas L.",
+    city: "Pernes-les-Fontaines",
+  },
+  {
+    quote: "Enfin un barbier sérieux dans le coin. Bon conseil pour la barbe.",
+    name: "Julien M.",
+    city: "Avignon",
+  },
+  {
+    quote: "Rien à dire, accueil au top et coupe au top.",
+    name: "Marc D.",
+    city: "Cavaillon",
+  },
+];
+
+const U = "https://images.unsplash.com/";
+const q = "?auto=format&fit=crop&q=80";
+
+export const heroImage = `${U}photo-1599351431202-1e0f0137899a${q}&w=2000`;
+
+export type GalleryItem = {
+  src: string;
+  alt: string;
+  span: string;
+};
+
+export const gallery: GalleryItem[] = [
+  {
+    src: `${U}photo-1503951914875-452162b0f3f1${q}&w=1200`,
+    alt: "Coupe homme nette réalisée au salon",
+    span: "md:col-span-7 md:row-span-2",
+  },
+  {
+    src: `${U}photo-1585747860715-2ba37e788b70${q}&w=900`,
+    alt: "Taille de barbe au salon",
+    span: "md:col-span-5",
+  },
+  {
+    src: `${U}photo-1622286342621-4bd786c2447c${q}&w=900`,
+    alt: "Outils de coiffure et de rasage",
+    span: "md:col-span-5",
+  },
+  {
+    src: `${U}photo-1605497788044-5a32c7078486${q}&w=1200`,
+    alt: "Ambiance du salon de coiffure",
+    span: "md:col-span-6",
+  },
+  {
+    src: `${U}photo-1503443207922-dff7d543fd0e${q}&w=1200`,
+    alt: "Finitions et contours au rasoir",
+    span: "md:col-span-6",
+  },
+];
 
 /** Construit un lien WhatsApp "Click to Chat" avec un message de RDV pré-rempli. */
 export function whatsappLink(opts?: {
@@ -30,138 +170,3 @@ export function whatsappLink(opts?: {
   const text = encodeURIComponent(lines.join("\n"));
   return `https://wa.me/${business.whatsapp}?text=${text}`;
 }
-
-export const nav = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "Prestations", href: "#prestations" },
-  { label: "Galerie", href: "#galerie" },
-  { label: "Avis", href: "#avis" },
-  { label: "Contact", href: "#contact" },
-];
-
-export const hours = [
-  { day: "Mardi – Vendredi", time: "09h00 – 19h00" },
-  { day: "Samedi", time: "08h30 – 18h00" },
-  { day: "Dimanche – Lundi", time: "Fermé" },
-];
-
-export const stats = [
-  { value: "45", suffix: "", label: "Avis Google" },
-  { value: "4,9", suffix: "/5", label: "Note de satisfaction" },
-  { value: "Sans", suffix: "", label: "Rendez-vous obligatoire" },
-  { value: "Premium", suffix: "", label: "Ambiance & accueil" },
-];
-
-export type Service = {
-  title: string;
-  description: string;
-  meta: string;
-};
-
-export const services: Service[] = [
-  {
-    title: "Coupe homme",
-    description: "Une coupe nette, étudiée selon la forme du visage et la tenue souhaitée.",
-    meta: "≈ 30 min",
-  },
-  {
-    title: "Dégradé",
-    description: "Transitions précises et progressives, du flou maîtrisé au dégradé américain.",
-    meta: "≈ 35 min",
-  },
-  {
-    title: "Barbe",
-    description: "Taille, structure et entretien de la barbe pour un tracé parfaitement défini.",
-    meta: "≈ 20 min",
-  },
-  {
-    title: "Contours",
-    description: "Finitions au rasoir sur la nuque et les contours pour une netteté absolue.",
-    meta: "≈ 15 min",
-  },
-  {
-    title: "Rasage traditionnel",
-    description: "Rasage à l'ancienne, serviette chaude et soin de la peau pour un geste précis.",
-    meta: "≈ 25 min",
-  },
-  {
-    title: "Coupe + barbe",
-    description: "L'entretien complet : coupe sur-mesure et barbe travaillée en une seule prestation.",
-    meta: "≈ 45 min",
-  },
-];
-
-export type Review = {
-  quote: string;
-  name: string;
-  city: string;
-};
-
-export const reviews: Review[] = [
-  {
-    quote: "Salon très propre et accueil impeccable. Coupe parfaite.",
-    name: "Nicolas R.",
-    city: "Le Thor",
-  },
-  {
-    quote:
-      "Enfin un salon sobre et professionnel. Travail précis et ambiance agréable.",
-    name: "Julien M.",
-    city: "Avignon",
-  },
-  {
-    quote: "Très bon dégradé et excellent accueil. Je recommande.",
-    name: "Antoine G.",
-    city: "L'Isle-sur-la-Sorgue",
-  },
-  {
-    quote: "Le lieu est élégant et le résultat toujours impeccable.",
-    name: "Marc D.",
-    city: "Cavaillon",
-  },
-  {
-    quote: "Service rapide, propre et très professionnel.",
-    name: "Thomas L.",
-    city: "Pernes-les-Fontaines",
-  },
-];
-
-const U = "https://images.unsplash.com/";
-const q = "?auto=format&fit=crop&q=80";
-
-export const heroImage = `${U}photo-1599351431202-1e0f0137899a${q}&w=2000`;
-export const atmosphereImage = `${U}photo-1521590832167-7bcbfaa6381f${q}&w=2000`;
-
-export type GalleryItem = {
-  src: string;
-  alt: string;
-  span: string;
-};
-
-export const gallery: GalleryItem[] = [
-  {
-    src: `${U}photo-1503951914875-452162b0f3f1${q}&w=1200`,
-    alt: "Détail d'une coupe homme nette",
-    span: "md:col-span-7 md:row-span-2",
-  },
-  {
-    src: `${U}photo-1585747860715-2ba37e788b70${q}&w=900`,
-    alt: "Taille de barbe au salon",
-    span: "md:col-span-5",
-  },
-  {
-    src: `${U}photo-1622286342621-4bd786c2447c${q}&w=900`,
-    alt: "Outils de coiffure et de rasage",
-    span: "md:col-span-5",
-  },
-  {
-    src: `${U}photo-1605497788044-5a32c7078486${q}&w=1200`,
-    alt: "Atmosphère de l'atelier de coiffure",
-    span: "md:col-span-6",
-  },
-  {
-    src: `${U}photo-1503443207922-dff7d543fd0e${q}&w=1200`,
-    alt: "Finitions et contours au rasoir",
-    span: "md:col-span-6",
-  },
-];

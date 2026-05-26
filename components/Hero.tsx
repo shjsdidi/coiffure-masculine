@@ -2,107 +2,114 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { business, heroImage } from "@/lib/content";
+import { business, heroImage, whatsappLink } from "@/lib/content";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const titleWords = ["Le", "détail", "change", "tout."];
+function Dot() {
+  return <span className="h-1 w-1 shrink-0 rounded-full bg-faint" />;
+}
 
 export function Hero() {
   return (
     <section
       id="accueil"
-      className="grain relative flex min-h-[100svh] items-center overflow-hidden"
+      className="grain relative flex min-h-[92svh] items-center overflow-hidden"
     >
-      {/* Background photograph */}
       <div className="absolute inset-0 -z-10">
         <Image
           src={heroImage}
-          alt="Intérieur d'un salon de coiffure masculin"
+          alt="Salon de coiffure homme Coiffure Masculine au Thor"
           fill
           priority
           sizes="100vw"
           className="editorial object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/70 via-ink-900/55 to-ink-900" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/30 to-transparent" />
-        {/* soft top light */}
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/[0.05] blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/75 via-ink-900/60 to-ink-900" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/45 to-transparent" />
       </div>
 
-      <div className="shell relative w-full pt-28 pb-20 sm:pt-32">
+      <div className="shell relative w-full pt-28 pb-16 sm:pt-32">
         <motion.span
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="kicker"
+          transition={{ duration: 0.7, ease: EASE }}
+          className="kicker text-cream"
         >
-          <span className="h-px w-8 bg-line-strong" />
-          {business.tagline}
+          <span className="h-px w-8 bg-accent/60" />
+          Coiffeur homme · {business.city} (84)
         </motion.span>
 
-        <h1
-          aria-label="Le détail change tout."
-          className="mt-8 max-w-4xl text-[2.75rem] font-semibold leading-[1.02] tracking-tightest text-fog text-glow sm:text-6xl lg:text-[5.25rem]"
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.08 }}
+          className="mt-6 max-w-3xl text-[2.6rem] font-semibold leading-[1.05] tracking-tightest text-fog sm:text-6xl lg:text-7xl"
         >
-          {titleWords.map((word, i) => (
-            <span
-              key={word}
-              aria-hidden="true"
-              className="inline-block overflow-hidden align-top"
-            >
-              <motion.span
-                className="inline-block pr-[0.28em]"
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, ease: EASE, delay: 0.15 + i * 0.09 }}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
+          Coupe, dégradé &amp; barbe au Thor.
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-          className="mt-7 max-w-md text-base leading-relaxed text-mute sm:text-lg"
+          transition={{ duration: 0.8, ease: EASE, delay: 0.16 }}
+          className="mt-6 max-w-xl text-base leading-relaxed text-mute sm:text-lg"
         >
-          Coupe, barbe et entretien masculin dans une atmosphère sobre et
-          élégante.
+          Salon de coiffure homme au cœur du Thor. Coupe nette, dégradé précis
+          et barbe taillée — avec ou sans rendez-vous.
         </motion.p>
 
+        {/* Repères clés : note, horaires, adresse */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.68 }}
-          className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+          transition={{ duration: 0.8, ease: EASE, delay: 0.24 }}
+          className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-cream"
         >
-          <a href="#prestations" className="btn-ghost">
-            Voir les prestations
+          <span className="inline-flex items-center gap-1.5">
+            <span className="text-accent">★</span>
+            <strong className="font-semibold text-fog">{business.rating}</strong>
+            <span className="text-mute">· {business.reviewCount} avis Google</span>
+          </span>
+          <Dot />
+          <span className="text-mute">{business.hoursSummary} · 9h–19h</span>
+          <Dot />
+          <span className="text-mute">{business.addressShort}</span>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
+          className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+        >
+          <a
+            href={whatsappLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Réserver maintenant
           </a>
-          <a href="#contact" className="btn-primary">
-            Réserver
+          <a href={business.phoneHref} className="btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              className="h-4 w-4"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 5c0 8.5 6.5 15 15 15a1.6 1.6 0 001.6-1.4l.3-2a1.5 1.5 0 00-1-1.6l-2.4-.8a1.5 1.5 0 00-1.6.5l-.7.9a11.5 11.5 0 01-5-5l.9-.7a1.5 1.5 0 00.5-1.6L10.5 5a1.5 1.5 0 00-1.6-1l-2 .3A1.6 1.6 0 004 5z"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Appeler le {business.phone}
           </a>
         </motion.div>
       </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.1 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block"
-      >
-        <span className="flex h-11 w-6 items-start justify-center rounded-full border border-line-strong p-1.5">
-          <motion.span
-            className="h-2 w-px bg-mute"
-            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </span>
-      </motion.div>
     </section>
   );
 }

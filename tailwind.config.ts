@@ -20,11 +20,11 @@ const config: Config = {
         "line-strong": "rgba(255,255,255,0.12)",
         fog: "#F5F5F5",
         cream: "#EDE9E1",
-        mute: "#9B9B9B",
-        faint: "#5C5C5C",
+        mute: "#ABABAB",
+        faint: "#737373",
         accent: {
-          DEFAULT: "#8FB7A3",
-          soft: "rgba(143,183,163,0.10)",
+          DEFAULT: "#C2A878",
+          soft: "rgba(194,168,120,0.10)",
         },
       },
       fontFamily: {

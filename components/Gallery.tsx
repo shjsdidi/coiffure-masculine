@@ -6,7 +6,7 @@ export function Gallery() {
   return (
     <section
       id="galerie"
-      className="shell scroll-mt-20 border-t border-line py-24 sm:py-32"
+      className="shell scroll-mt-24 py-20 sm:py-28"
     >
       <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12 md:auto-rows-[220px]">
         {gallery.map((item, i) => (

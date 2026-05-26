@@ -43,7 +43,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="shell scroll-mt-20 border-t border-line py-24 sm:py-32"
+      className="shell scroll-mt-24 py-20 sm:py-28"
     >
       <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-2">
         {/* Left — coordonnées */}
